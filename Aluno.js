@@ -3,15 +3,17 @@ exports.__esModule = true;
 var Disciplina_1 = require("./Disciplina");
 var Aluno = /** @class */ (function () {
     function Aluno() {
+        this.disciplinas = [];
     }
     Aluno.prototype.matricular = function (disciplina) {
         this.disciplinas.push(disciplina);
     };
     Aluno.prototype.trancar = function (disciplina) {
-        this.disciplinas.splice(this.disciplinas.indexOf(disciplina));
+        var cont = this.disciplinas.indexOf(disciplina);
+        this.disciplinas.splice(cont, cont);
     };
     Aluno.prototype.situacao = function () {
-        var texto = this.nome + "Matrícula: " + this.matricula + " Disciplinas: \n";
+        var texto = this.nome + " Matrícula: " + this.matricula + " Disciplinas: \n";
         this.disciplinas.forEach(function (element) {
             texto += element.nome + "\n";
         });
@@ -29,6 +31,8 @@ a1.matricula = 2019001;
 a1.matricular(d1);
 a1.matricular(d2);
 a1.matricular(d3);
-alert(a1.situacao);
+console.log("----");
+console.log(a1.situacao());
 a1.trancar(d2);
-alert(a1.situacao);
+console.log("----");
+console.log(a1.situacao());

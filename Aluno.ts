@@ -5,18 +5,19 @@ class Aluno {
     nome: string;
     endereco: string;
     matricula: number;
-    disciplinas: Array<Disciplina>;
+    disciplinas: Array<Disciplina> = [];
 
     matricular(disciplina: Disciplina) : void {
         this.disciplinas.push(disciplina);
     }
 
     trancar(disciplina: Disciplina) : void {
-        this.disciplinas.splice(this.disciplinas.indexOf(disciplina));
+        let cont = this.disciplinas.indexOf(disciplina);
+        this.disciplinas.splice(cont, cont);
     }
 
     situacao() : string {
-        let texto =  this.nome +"Matrícula: " + this.matricula + " Disciplinas: \n";
+        let texto =  this.nome +" Matrícula: " + this.matricula + " Disciplinas: \n";
         this.disciplinas.forEach(element => {
             texto += element.nome + "\n"; 
         });
@@ -36,9 +37,11 @@ a1.matricula = 2019001;
 a1.matricular(d1);
 a1.matricular(d2);
 a1.matricular(d3);
-alert(a1.situacao);
+console.log("----");
+console.log(a1.situacao());
 a1.trancar(d2);
-alert(a1.situacao);
+console.log("----");
+console.log(a1.situacao());
 
 
 
